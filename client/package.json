@@ -1,0 +1,14 @@
+{
+  "name": "pixelhub",
+  "version": "1.0.0",
+  "description": "frontend for pixelhub",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "electron": "^42.0.0"
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pixelhub</title>
+    <style>
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@panzoom/panzoom@4.6.1/dist/panzoom.min.js"></script> <!-- biblioteca de pan e zoom-->
+    <script src="scripts/services.js" defer></script>           <!-- funções fetch -->
+    <script src="scripts/drawingTools.js"></script>         <!-- implementação das ferramentas -->
+    <script src="scripts/canvas.js" defer></script>        <!-- implementação da tela -->
+    <script src="scripts/keybind.js" defer></script>
+    <script src="scripts/sync.js" defer></script>              <!-- requests de sincronização da tela -->
+</head>
+
+<body oncontextmenu="return false;">
+    <div id="hud">
+        <div id="modal2">
+            <div class="window">
+                <h2>New user</h2>
+                <form id="singup-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" onpointerdown="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="this.focus()">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" onpointerdown="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="this.focus()">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Confirm password</label>
+                        <input id="password" type="password" onpointerdown="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="this.focus()">
+                    </div>
+                    <button onpointerdown="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="alert('send')" type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div id="modal">
+            <div class="window">
+                <h2>Login user</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" onpointerdown="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="this.focus()">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" onpointerdown="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="this.focus()">
+                    </div>
+                    <button onpointerdown="event.stopPropagation()" onmousedown="event.stopPropagation()" onclick="alert('send')" type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <header class="top-bar">
+            <div class="top-left">
+                <h1 class="logo-text">pixelhub</h1>
+                <div class="community-box"></div>
+                <span class="community-text">UFC</span>
+            </div>
+            <div class="top-right">
+                <div class="user-pill">vistomia</div>
+                <i class="fa-solid fa-circle-user user-icon"></i>
+            </div>
+            <div class="top-right">
+                <button class="btn-singup" id="btn-singup">Cadastrar</button>
+                <button class="btn-login" id="btn-login">Entrar</button>
+            </div>
+        </header>
+
+        <aside class="left-toolbar">
+            <button class="circle-btn" id="zoomin-btn" onclick="zoomIn()"><i class="fa-solid fa-plus"></i></button>
+            <button class="circle-btn" id="zoomout-btn" onclick="zoomOut()"><i class="fa-solid fa-minus"></i></button>
+            
+            <div class="tools-container">
+                <button onclick="setPencil()" class="pencil" title="Lápis [Q]"><i class="fa-solid fa-pencil"></i></button>
+                <button onclick="setEraser()" class="eraser" title="Borracha [E]"><i class="fa-solid fa-eraser"></i></button>
+                <button onclick="setBucket()" class="bucket" title="Balde de Tinta [R]"><i class="fa-solid fa-fill-drip"></i></button>
+                <button onclick="setDropper()"class="dropper" title="Conta Gotas [Botão Direito]"><i class="fa-solid fa-eye-dropper"></i></button>
+                <button onclick="setPan()" class="pan" title="Mover [Espaço]"><i class="fa-solid fa-arrows-up-down-left-right"></i></button>
+            </div>
+        </aside>
+
+        <aside class="right-toolbar">
+            <div class="mini-palette">
+                <button class="mini-color blue"></button>
+                <button class="mini-color yellow"></button>
+                <button class="mini-color orange"></button>
+                <button class="mini-color red"></button>
+                <button class="mini-color green"></button>
+                <button class="mini-color magenta"></button>
+                <button class="mini-color brown"></button>
+                <button class="mini-color gray"></button>
+                <button class="mini-color black"></button>
+                <button class="mini-color white"></button>
+            </div>
+            <div class="color-inputs">
+                <input id="color-1" type="color" value="#000000">
+            </div>
+        </aside>
+
+        <div id="cursor"></div>
+    </div>
+
+    <div id="screen">
+        <canvas id="map"></canvas>
+        <canvas id="mouse-preview"></canvas>
+    </div>
+</body>
+</html>
