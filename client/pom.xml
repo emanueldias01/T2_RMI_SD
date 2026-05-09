@@ -6,17 +6,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.sd</groupId>
-    <artifactId>board-server</artifactId>
+    <artifactId>board-client</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Quadro Colaborativo - Servidor RMI</name>
+    <name>Quadro Colaborativo - Cliente RMI</name>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>br.com.sd.server.BoardServer</mainClass>
+        <mainClass>br.com.sd.client.BoardClient</mainClass>
     </properties>
 
     <build>
@@ -41,7 +41,7 @@
                                     <mainClass>${mainClass}</mainClass>
                                 </transformer>
                             </transformers>
-                            <finalName>board-server</finalName>
+                            <finalName>board-client</finalName>
                         </configuration>
                     </execution>
                 </executions>
