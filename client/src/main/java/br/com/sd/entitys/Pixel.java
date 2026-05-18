@@ -4,15 +4,13 @@ import java.io.Serializable;
 
 /**
  * Representa um pixel no quadro colaborativo.
- * Composição tipo AGREGAÇÃO ("tem-um") com Color.
- * Passada por VALOR nas chamadas remotas (serializada via JSON).
  */
 public class Pixel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int x;
     private int y;
-    private Color color; // AGREGAÇÃO: Pixel "tem-uma" Color
+    private Color color;
 
     public Pixel() {}
 

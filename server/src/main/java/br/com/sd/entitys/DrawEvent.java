@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * Representa um evento de desenho: um conjunto de pixels alterados de uma vez.
- * Composição tipo AGREGAÇÃO ("tem-uma lista de Pixels").
- * Passada por VALOR nas chamadas remotas (serializada via JSON).
  */
 public class DrawEvent implements Serializable {
     private static final long serialVersionUID = 1L;

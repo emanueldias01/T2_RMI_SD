@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * Representa uma cor RGB.
- * Passada por VALOR nas chamadas remotas (serializada via JSON).
  */
 public class Color implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -32,7 +31,6 @@ public class Color implements Serializable {
         return new Color(r, g, b);
     }
 
-    /** Converte para inteiro RGB */
     public int toInt() {
         return (r << 16) | (g << 8) | b;
     }

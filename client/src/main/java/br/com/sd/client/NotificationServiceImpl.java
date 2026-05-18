@@ -3,7 +3,6 @@ package br.com.sd.client;
 import br.com.sd.entitys.DrawEvent;
 import br.com.sd.entitys.Pixel;
 import br.com.sd.remote.NotificationService;
-import br.com.sd.serialization.JsonSerializer;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -21,7 +20,7 @@ public class NotificationServiceImpl extends UnicastRemoteObject implements Noti
     private static final long serialVersionUID = 1L;
 
     private final String clientId;
-    private final BoardCanvas canvas; // referência ao canvas local para atualizar
+    private final BoardCanvas canvas;
 
     public NotificationServiceImpl(String clientId, BoardCanvas canvas) throws RemoteException {
         super();
@@ -29,16 +28,10 @@ public class NotificationServiceImpl extends UnicastRemoteObject implements Noti
         this.canvas   = canvas;
     }
 
-    /**
-     * Chamado pelo SERVIDOR (via RMI) quando novos pixels foram desenhados.
-     * Recebe DrawEvent por VALOR (JSON desserializado).
-     */
     @Override
-    public void onDrawEvent(byte[] drawEventJson) throws RemoteException {
-        DrawEvent event = JsonSerializer.deserializeDrawEvent(drawEventJson);
+    public void onDrawEvent(DrawEvent event) throws RemoteException {
         System.out.println("[Client-" + clientId + "] onDrawEvent() recebido: " + event);
 
-        // Aplica os pixels ao canvas local (passagem por valor já desserializada)
         for (Pixel p : event.getPixels()) {
             canvas.applyPixel(p);
         }

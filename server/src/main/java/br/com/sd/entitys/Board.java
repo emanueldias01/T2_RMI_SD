@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 /**
  * Representa o quadro colaborativo (canvas).
- * Composição tipo AGREGAÇÃO ("tem-um") com Pixel (grid).
- * Passada por VALOR nas chamadas remotas ao retornar snapshot (serializada via JSON).
  */
 public class Board implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -35,19 +33,16 @@ public class Board implements Serializable {
                 this.grid[i][j] = initGrid[i][j];
     }
 
-    /** Aplica um pixel ao quadro */
     public void setPixel(Pixel p) {
         if (p.getX() >= 0 && p.getX() < width && p.getY() >= 0 && p.getY() < height)
             this.grid[p.getY()][p.getX()] = p.getColor().toInt();
     }
 
-    /** Aplica um pixel diretamente pelo inteiro RGB */
     public void setPixel(int x, int y, int colorInt) {
         if (x >= 0 && x < width && y >= 0 && y < height)
             this.grid[y][x] = colorInt;
     }
 
-    /** Retorna cópia defensiva da grade */
     public int[][] getGrid() {
         int[][] copy = new int[height][width];
         for (int i = 0; i < height; i++)
@@ -63,7 +58,6 @@ public class Board implements Serializable {
     public void setWidth(int width)   { this.width = width;   }
     public void setGrid(int[][] grid) { this.grid = grid;     }
 
-    /** Limpa o quadro (tudo branco) */
     public void clear() {
         for (int i = 0; i < height; i++)
             for (int j = 0; j < width; j++)

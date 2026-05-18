@@ -15,17 +15,14 @@ public class BoardCanvas {
         this.localBoard = initialBoard;
     }
 
-    /** Aplica um pixel ao board local */
     public synchronized void applyPixel(Pixel p) {
         localBoard.setPixel(p);
     }
 
-    /** Limpa o board local */
     public synchronized void clear() {
         localBoard.clear();
     }
 
-    /** Imprime o estado atual do board no terminal */
     public synchronized void print() {
         System.out.println(localBoard.toString());
     }
