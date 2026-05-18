@@ -22,22 +22,18 @@ javac -d bin src/**/*.java
 
 ### 2. Iniciar o Servidor RMI
 
-Em um terminal, execute:
-
+- A classe Main do server está em server/server/BoardServer.java
+- Execute:
 ```sh
-cd bin
-# Iniciar o registry do RMI (apenas uma vez)
-rmiregistry &
-# Em outro terminal (na pasta bin), rode o servidor
-java PixelHubServer
+    java BoardServer.java
 ```
 
 ### 3. Executar o Cliente
 
-Em outro terminal, também no diretório `bin`:
-
+- A classe Main do client está em client/client/BoardClient.java
+- Execute:
 ```sh
-java PixelHubClient
+    java BoardClient.java
 ```
 
 Se o servidor e o cliente estiverem em máquinas diferentes, lembre-se de ajustar o host/IP no cliente conforme instruções no código.
